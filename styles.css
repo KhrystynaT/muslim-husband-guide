@@ -1,21 +1,20 @@
 body {
-  background: url("https://png.pngtree.com/background/20210716/original/pngtree-cute-cat-happy-happy-party-picture-image_1362783.jpg");
+  background: url("https://png.pngtree.com/background/20210716/original/pngtree-empty-white-eid-mubarak-islamic-background-with-ramadan-lantern-picture-image_1377952.jpg");
   background-size: cover;
   background-position: center;
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
 }
+
 .container {
-  position: relative;
+  display: flex;
+  align-items: center;
   height: 100vh;
 }
 
 .options-container {
-  position: absolute;
-  top: 0;
-  left: 0;
-  padding: 2%;
+  padding: 5%;
 }
 
 #quote-container {
@@ -26,26 +25,35 @@ body {
 .option {
   margin-bottom: 2%;
 }
-
 @media screen and (max-width: 950px) {
   .options-container {
     position: static;
     width: 80%;
     margin: 2% auto;
     padding: 1%;
+    text-align: center; /* Add this line to center the content */
   }
 
   #quote-container {
-    margin-top: 2%;
+    margin-top: 3%;
   }
 
   .option {
     margin-bottom: 1%;
   }
-}
 
+  .container {
+    flex-direction: column;
+    align-items: center; /* Add this line to center the container vertically */
+  }
+
+  .options-container {
+    margin: 0 auto; /* Update to margin: 0 auto to center horizontally */
+    margin-bottom: 1rem; /* Add some bottom margin for separation */
+  }
+}
 #generate-btn {
-  background-color: #6cb2eb;
+  background-color: #a38a37e2;
   color: #fff;
   border: none;
   padding: 0.75rem 1.5rem;
@@ -54,7 +62,7 @@ body {
 }
 
 .options-container {
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: rgba(176, 155, 63, 0.298);
   padding: 1rem;
   border-radius: 5px;
   width: 300px;
@@ -71,7 +79,6 @@ body {
   align-items: center;
   margin-bottom: 0.5rem;
 }
-
 .option input[type="checkbox"] {
   margin-right: 0.5rem;
 }
