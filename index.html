@@ -8,22 +8,39 @@
   </head>
   <body>
     <div class="container">
+      <div class="options-container">
+        <h2>Select Options:</h2>
+        <div class="option">
+          <input type="checkbox" id="nickname-option" value="nickname" />
+          <label for="nickname-option">Nicknames for wifey</label>
+        </div>
+        <div class="option">
+          <input type="checkbox" id="compliment-option" value="compliment" />
+          <label for="compliment-option">Compliments for my wife</label>
+        </div>
+        <div class="option">
+          <input type="checkbox" id="quran-option" value="quran" />
+          <label for="quran-option">Quran to learn today</label>
+        </div>
+        <div class="option">
+          <input type="checkbox" id="hadiths-option" value="hadiths" />
+          <label for="hadiths-option">Hadith to discuss</label>
+        </div>
+        <div class="option">
+          <input type="checkbox" id="shukran-option" value="shukran" />
+          <label for="shikran-option">Appreciate her</label>
+        </div>
+        <div class="option">
+          <input type="checkbox" id="gift-option" value="gift" />
+          <label for="gift-option">Gift ideas</label>
+        </div>
+      </div>
       <div id="quote-container">
-        <p id="quote-text">Loading...</p>
-        <cite id="quote-author"></cite>
+        <p id="quote">Loading...</p>
+        <div id="button-container">
+          <button id="generate-btn">Generate Quote</button>
+        </div>
       </div>
-      <div id="button-container">
-        <button id="generate-button">Generate Quote</button>
-      </div>
-    </div>
-    <div id="options-container">
-      <select id="quote-options">
-        <option value="encourage">Encourage Me</option>
-        <option value="inspire">Inspire Me</option>
-        <option value="support">Support Me</option>
-        <option value="motivate">Motivate Me</option>
-        <option value="praise">Praise Me</option>
-      </select>
     </div>
 
     <script src="script.js"></script>

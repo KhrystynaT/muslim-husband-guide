@@ -1,49 +1,231 @@
-const quotes = {
-  encourage: [
-    { text: "Encouragement quote 1", author: "Author 1" },
-    { text: "Encouragement quote 2", author: "Author 2" },
-    { text: "Encouragement quote 3", author: "Author 3" },
-  ],
-  inspire: [
-    { text: "Inspiration quote 1", author: "Author 1" },
-    { text: "Inspiration quote 2", author: "Author 2" },
-    { text: "Inspiration quote 3", author: "Author 3" },
-  ],
-  support: [
-    { text: "Support quote 1", author: "Author 1" },
-    { text: "Support quote 2", author: "Author 2" },
-    { text: "Support quote 3", author: "Author 3" },
-  ],
-  motivate: [
-    { text: "Motivation quote 1", author: "Author 1" },
-    { text: "Motivation quote 2", author: "Author 2" },
-    { text: "Motivation quote 3", author: "Author 3" },
-  ],
-  praise: [
-    { text: "Praise quote 1", author: "Author 1" },
-    { text: "Praise quote 2", author: "Author 2" },
-    { text: "Praise quote 3", author: "Author 3" },
-  ],
-};
+document.addEventListener("DOMContentLoaded", function () {
+  var generateBtn = document.getElementById("generate-btn");
+  const quoteElement = document.getElementById("quote");
 
-function generateRandomQuote(option) {
-  const quoteList = quotes[option];
-  const randomIndex = Math.floor(Math.random() * quoteList.length);
-  return quoteList[randomIndex];
-}
+  function generateQuote() {
+    const options = document.querySelectorAll(
+      '.option input[type="checkbox"]:checked'
+    );
+    const selectedOptions = Array.from(options).map((option) => option.value);
 
-function displayQuote() {
-  const quoteContainer = document.getElementById("quote-container");
-  const quoteText = document.getElementById("quote-text");
-  const quoteAuthor = document.getElementById("quote-author");
-  const quoteOptions = document.getElementById("quote-options");
+    if (selectedOptions.length === 0) {
+      quoteElement.textContent = "Please select at least one option.";
+      return;
+    }
 
-  const selectedOption = quoteOptions.value;
-  const quote = generateRandomQuote(selectedOption);
+    const quotes = {
+      nickname: [
+        "Hayati - (My life)",
+        "Habibti - (My beloved)",
+        "Ayoonee - (My eyes)",
+        "Haneen - (Yearning)",
+        "Zahrat Al Jannah - (Flower of Paradise)",
+        "Lamsati - (My touch)",
+        "Ruh Albi - (The soul of my heart)",
+        "Almasiyya - (My diamond)",
+        "Aziza - (Beloved)",
+        "Layali - (My nights)",
+        "Malakat Qalbi - (Queen of my heart)",
+        "Afdiyya - (My precious)",
+        "Nisf Hayati - (Half of my life)",
+        "Wajdiyya - (My passion)",
+        "Jannati - (My heaven)",
+        "Nadira - (Rare gem)",
+        "Muntaha Talabi - (The ultimate of my desires)",
+        "Sahar - (Dawn)",
+        "Al-Habiba - (The beloved)",
+        "Sa'ada - (Happiness)",
+        "Roshan - (Radiant)",
+        "Asilah - (Noble)",
+        "Gharami - (My love)",
+        "Amani - (My wishes)",
+        "Shahrazad - (The enchanting)",
+        "Ruqayya - (Elevated)",
+        "Firdaws - (Paradise)",
+        "Zakiyya - (Pure)",
+        "Munira - (Illuminating)",
+        "Rabbaniyya - (Divine)",
+      ],
+      shukran: [
+        "Thank you, habibi, for the endless joy you bring to my life.",
+        "I am grateful to you, ya ruhi, for your unwavering love and support.",
+        "My heart overflows with gratitude for you, ya habibti, for making every moment magical.",
+        "Thank you, ya aasal, for being my rock and standing by me through thick and thin.",
+        "I am forever thankful, ya azizati, for the beautiful life we have built together.",
+        "Thank you, ya malakat albi, for your gentle touch that heals my soul.",
+        "My deepest gratitude, ya habibati, for the laughter and happiness you fill my days with.",
+        "I am grateful to you, ya ghazal, for the warmth and comfort of your embrace.",
+        "Thank you, ya habib albi, for the way you understand and accept me completely.",
+        "I am eternally thankful, ya aroosati, for the love and tenderness you shower upon me.",
+        "Thank you, ya nawarti, for being the light that guides me in every step of our journey.",
+        "My heart is filled with gratitude, ya hayati, for the beautiful memories we create together.",
+        "Thank you, ya malak albi, for your unwavering belief in me and my dreams.",
+        "I am forever grateful, ya ahlami, for your unwavering loyalty and devotion.",
+        "Thank you, ya habibati, for the way you make even the simplest moments feel extraordinary.",
+        "My deepest gratitude, ya rayati, for the passion and fire you ignite within me.",
+        "I am grateful to you, ya qalbi, for your patience and understanding in every situation.",
+        "Thank you, ya nafsi, for the way you inspire me to be a better person every day.",
+        "My heart is overflowing with gratitude, ya ahlamuna, for the beautiful family we have created together.",
+        "Thank you, ya mazaji, for the way you light up my world with your presence.",
+        "I am forever thankful, ya habibi, for the way you fill my life with love and laughter.",
+        "Thank you, ya habibti, for the way you make my dreams feel within reach.",
+        "My deepest gratitude, ya wardi, for the way you accept and cherish every part of me.",
+        "Thank you, ya rohi, for the peace and tranquility you bring to my chaotic world.",
+        "I am grateful to you, ya aashti, for the way you make every day feel like a fairytale.",
+        "Thank you, ya jameeli, for the way you make my heart skip a beat with your smile.",
+        "My heart is filled with gratitude, ya habibi, for the way you make me feel loved and cherished.",
+        "Thank you, ya sahibati, for being my best friend and confidante.",
+        "I am forever grateful, ya ayni, for the way you make our house feel like a home.",
+        "Thank you, ya aasmi, for the way you make every challenge seem conquerable with your support.",
+        "My deepest gratitude, ya wahshi, for the way you make even the darkest days brighter with your love.",
+      ],
+      compliment: [
+        "Ya habibti, your smile brightens my world.",
+        "Habibi, your kindness and compassion know no bounds.",
+        "Ya aroosati, your beauty radiates from within and captivates my heart.",
+        "Ruhi, your intelligence and wisdom inspire me every day.",
+        "Ya malakat albi, your grace and elegance leave me in awe.",
+        "Habibati, your love fills my life with warmth and joy.",
+        "Ya ghazal, your presence brings peace and tranquility to my soul.",
+        "Ya azizati, your strength and resilience amaze me.",
+        "Ahlami, your support and encouragement fuel my dreams.",
+        "Ya nawarti, your laughter and sense of humor brighten even the darkest days.",
+        "Habibi, your love is a sanctuary where I find solace and comfort.",
+        "Ya hayati, your tenderness and affection make every moment with you precious.",
+        "Ya ahlamuna, your nurturing nature makes our family flourish.",
+        "Ruhi, your passion and determination inspire me to be a better person.",
+        "Ya habib albi, your loyalty and devotion are the pillars of our love.",
+        "Habibati, your presence in my life completes me.",
+        "Ya qalbi, your understanding and empathy make you my soulmate.",
+        "Aroosati, your resilience and courage are an inspiration to us all.",
+        "Ya rayati, your creativity and talent bring beauty to everything you touch.",
+        "Habibi, your patience and forgiveness make our relationship strong and unbreakable.",
+        "Ya rohi, your love is the compass that guides me through life's journey.",
+        "Hayati, your selflessness and generosity make you an angel in my eyes.",
+        "Ya wardi, your love is a blossoming flower that fills my heart with joy.",
+        "Habibti, your intelligence and insight make you an invaluable partner.",
+        "Ya aashti, your grace and poise make you a true queen.",
+        "Malakat albi, your love is a precious gem that I treasure deeply.",
+        "Ya sahibati, your love is the melody that soothes my soul.",
+        "Ayni, your eyes hold a world of love and compassion.",
+        "Ya aasal, your touch sets my heart on fire with passion.",
+        "Habibi, your love is the anchor that keeps me grounded in life.",
+        "Ya habibti, your presence fills every room with joy and happiness.",
+      ],
+      quran: [
+        "Surah An-Nisa\n\nTeaching:\n- The husband can teach his wife about the rights and responsibilities of women in Islam, the importance of justice and kindness towards women, and the concept of gender equality in the sight of Allah.",
+        "Surah Al-Ma'idah\n\nTeaching:\n- The husband can teach his wife about the concept of halal and haram, the importance of ethical conduct and honesty in transactions, and the significance of following the dietary laws of Islam.",
+        "Surah Al-An'am\n\nTeaching:\n- The husband can teach his wife about the oneness of Allah, the prohibition of associating partners with Him, and the importance of sincere worship and submission to Allah alone.",
+        "Surah Al-A'raf\n\nTeaching:\n- The husband can teach his wife about the stories of the past nations and the lessons they hold, emphasizing the importance of learning from history and avoiding the mistakes of previous generations.",
+        "Surah Al-Anfal\n\nTeaching:\n- The husband can teach his wife about the concept of unity and cooperation within the Muslim community, the importance of supporting one another in times of difficulty, and the significance of trust and reliance on Allah in times of war.",
+        "Surah At-Tawbah\n\nTeaching:\n- The husband can teach his wife about repentance, seeking forgiveness from Allah, and the importance of sincerity and turning back to Allah after making mistakes.",
+        "Surah Yunus\n\nTeaching:\n- The husband can teach his wife about the stories of the prophets and messengers of Allah, their struggles and perseverance, and the importance of following their example in faith and devotion to Allah.",
+        "Surah Hud\n\nTeaching:\n- The husband can teach his wife about the consequences of denying the message of Allah, the importance of calling others to righteousness, and the need to be steadfast in the face of adversity.",
+        "Surah Yusuf\n\nTeaching:\n- The husband can teach his wife about the story of Prophet Yusuf (Joseph) and the lessons of patience, trust in Allah's plan, and the importance of forgiveness and maintaining good character.",
+        "Surah Ar-Rad\n\nTeaching:\n- The husband can teach his wife about the signs of Allah in the creation and the universe, emphasizing the importance of reflecting on His signs and recognizing His power and wisdom.",
+        "Surah Ibrahim\n\nTeaching:\n- The husband can teach his wife about the faith of Prophet Ibrahim (Abraham) and his unwavering belief in Allah, highlighting the importance of trust, gratitude, and sacrifice in the path of Allah.",
+        "Surah Al-Hijr\n\nTeaching:\n- The husband can teach his wife about the consequences of arrogance and pride, the importance of humility before Allah, and the significance of seeking protection from Satan's whisperings.",
+        "Surah An-Nahl\n\nTeaching:\n- The husband can teach his wife about the blessings of Allah, the gratitude for His provisions, and the importance of recognizing and appreciating the favors bestowed upon them.",
+        "Surah Al-Isra\n\nTeaching:\n- The husband can teach his wife about the importance of upholding family ties, being dutiful to parents, and the significance of journeying towards Allah in faith and obedience.",
+        "Surah Al-Kahf\n\nTeaching:\n- The husband can teach his wife about the story of the People of the Cave and the lessons of faith, patience, and reliance on Allah in the face of adversity.",
+        "Surah Maryam\n\nTeaching:\n- The husband can teach his wife about the story of Maryam (Mary), her devotion to Allah, and the lessons of faith, patience, and trust in Allah's plan.",
+        "Surah Ta-Ha\n\nTeaching:\n- The husband can teach his wife about the story of Musa (Moses) and the lessons of courage, trust in Allah, and the power of supplication in times of difficulty.",
+        "Surah Al-Anbiya\n\nTeaching:\n- The husband can teach his wife about the stories of various prophets, their unwavering faith, and the importance of following their example in righteousness and obedience to Allah.",
+        "Surah Al-Hajj\n\nTeaching:\n- The husband can teach his wife about the rituals and significance of Hajj, the pilgrimage to Makkah, and the lessons of unity, sacrifice, and the remembrance of Allah during this sacred journey.",
+        "Surah Al-Mu'minun\n\nTeaching:\n- The husband can teach his wife about the characteristics of the believers, the importance of righteous deeds, and the significance of maintaining a strong connection with Allah.",
+        "Surah An-Nur\n\nTeaching:\n- The husband can teach his wife about the concept of modesty and the importance of upholding modesty in appearance, behavior, and interactions with others.",
+        "Surah Al-Furqan\n\nTeaching:\n- The husband can teach his wife about the distinguishing criteria between truth and falsehood, the importance of seeking knowledge, and the significance of wisdom in making decisions.",
+        "Surah Ash-Shu'ara\n\nTeaching:\n- The husband can teach his wife about the stories of the poets and the lessons they hold, emphasizing the importance of using language and expression in a positive and meaningful way.",
+        "Surah An-Naml\n\nTeaching:\n- The husband can teach his wife about the story of Prophet Sulaiman (Solomon) and the lessons of wisdom, justice, and the proper use of power and authority.",
+        "Surah Al-Qasas\n\nTeaching:\n- The husband can teach his wife about the story of Musa (Moses) and the lessons of trust in Allah, resilience in the face of oppression, and the triumph of truth over falsehood.",
+        "Surah Al-Ankabut\n\nTeaching:\n- The husband can teach his wife about the importance of patience and perseverance in times of trial, the significance of relying on Allah's help, and the lessons from the stories of previous nations.",
+        "Surah Ar-Rum\n\nTeaching:\n- The husband can teach his wife about the signs of Allah in the creation, the importance of contemplating His signs, and the lessons from the historical examples of different nations.",
+        "Surah Luqman\n\nTeaching:\n- The husband can teach his wife about the wisdom and advice of Luqman to his son, emphasizing the importance of faith, gratitude, and good character in life.",
+        "Surah As-Sajdah\n\nTeaching:\n- The husband can teach his wife about the significance of prostration in worship, the humility and submission before Allah, and the rewards of sincere devotion to Him.",
+      ],
+      hadiths: [
+        "Hadith: Actions are judged by intentions.\n\nKey points:\n- Highlights the importance of sincere intentions in one's actions.\n- Reminds believers to be mindful of their intentions and strive for purity in their deeds.",
+        "Hadith: The best of you is the one who is best to his family.\n\nKey points:\n- Emphasizes the importance of being good and kind to one's family members.\n- Encourages husbands to prioritize their family's well-being and happiness.",
+        "Hadith: None of you truly believes until he loves for his brother what he loves for himself.\n\nKey points:\n- Promotes the virtue of loving and wishing well for others.\n- Encourages husbands to show love and care for their wives as they would for themselves.",
+        "Hadith: Do not be people without minds of your own, saying that if others treat you well, you will treat them well, and that if they do wrong, you will do wrong. But (instead) accustom yourselves to do good if people do good and not to do wrong if they do evil.\n\nKey points:\n- Encourages believers to rise above reciprocation and instead do good regardless of how others treat them.\n- Urges husbands to maintain a high moral standard and respond to their wives' actions with kindness.",
+        "Hadith: The strong person is not the one who can wrestle someone else down. The strong person is the one who can control himself when he is angry.\n\nKey points:\n- Highlights the strength of self-control and managing one's emotions.\n- Encourages husbands to practice patience and self-restraint, particularly in moments of anger or conflict.",
+        "Hadith: Modesty is part of faith.\n\nKey points:\n- Stresses the importance of modesty as an essential aspect of faith.\n- Encourages husbands to promote and uphold modesty within the family.",
+        "Hadith: A believer does not taunt, curse, abuse, or talk indecently.\n\nKey points:\n- Promotes good behavior and discourages harmful speech and actions.\n- Encourages husbands to speak kindly and respectfully to their wives.",
+        "Hadith: A kind word is a form of charity.\n\nKey points:\n- Highlights the value of kind words in charitable acts.\n- Encourages husbands to express love, appreciation, and encouragement through kind and uplifting words.",
+        "Hadith: Removing harmful things from the road is a charity.\n\nKey points:\n- Encourages acts of removing harm and promoting safety and well-being.\n- Urges husbands to protect and care for their wives by creating a safe and supportive environment.",
+        "Hadith: Smiling in the face of your brother is a charity.\n\nKey points:\n- Emphasizes the significance of a warm and friendly demeanor.\n- Encourages husbands to greet their wives with a genuine smile and create a joyful atmosphere.",
+        "Hadith: The best of you are those who are best to their women.\n\nKey points:\n- Underlines the importance of treating women, including one's wife, with utmost respect and kindness.\n- Encourages husbands to be caring, supportive, and considerate towards their wives.",
+        "Hadith: The best among you is the one who learns the Quran and teaches it.\n\nKey points:\n- Highlights the importance of seeking knowledge and sharing it with others, including one's family.\n- Encourages husbands to deepen their understanding of the Quran and educate their wives about its teachings.",
+        "Hadith: The best of you is the one who is best to his neighbor.\n\nKey points:\n- Emphasizes the importance of being good and helpful to neighbors.\n- Encourages husbands to extend kindness and support to their neighbors, including their wives.",
+        "Hadith: The best of you is the one who feeds others and greets both those he knows and those he does not know.\n\nKey points:\n- Promotes the virtues of generosity and hospitality.\n- Encourages husbands to provide for their families and show kindness to both familiar and unfamiliar individuals.",
+        "Hadith: God has no mercy on one who has no mercy for others.\n\nKey points:\n- Underlines the importance of showing mercy and compassion towards others.\n- Encourages husbands to be merciful and understanding towards their wives.",
+        "Hadith: The strong is not the one who overcomes the people by his strength, but the strong is the one who controls himself while in anger.\n\nKey points:\n- Highlights the strength of character in managing anger and avoiding conflict.\n- Encourages husbands to control their anger and resolve conflicts peacefully.",
+        "Hadith: The most beloved people to Allah are those who are most beneficial to people.\n\nKey points:\n- Encourages believers to be of benefit and assistance to others.\n- Urges husbands to actively contribute to the well-being and happiness of their wives.",
+        "Hadith: Do not belittle any good deed, even meeting your brother with a cheerful face.\n\nKey points:\n- Promotes the appreciation of even small acts of kindness and positivity.\n- Encourages husbands to greet their wives with a cheerful and loving attitude.",
+        "Hadith: The best form of worship is to feed the hungry.\n\nKey points:\n- Emphasizes the importance of feeding the hungry as an act of worship.\n- Encourages husbands to provide for their families' needs and support those who are less fortunate.",
+        "Hadith: The most beloved of deeds to Allah are those that are consistent, even if they are small.\n\nKey points:\n- Emphasizes the value of consistency in performing good deeds, regardless of their size.\n- Encourages husbands to consistently show love, care, and support to their wives.",
+        "Hadith: Exchange gifts, as that will lead to increasing your love to one another.\n\nKey points:\n- Promotes the act of exchanging gifts as a means to strengthen love and affection.\n- Encourages husbands to surprise their wives with thoughtful gifts and gestures.",
+        "Hadith: The most beloved of places to Allah are the mosques.\n\nKey points:\n- Highlights the significance of mosques as places of worship and spiritual connection.\n- Encourages husbands to support their wives in attending mosques for prayer and seeking spiritual growth.",
+        "Hadith: Allah is kind and likes kindness in all matters.\n\nKey points:\n- Emphasizes the attribute of kindness and its importance in all aspects of life.\n- Encourages husbands to show kindness to their wives in every interaction and situation.",
+        "Hadith: God does not judge you according to your bodies and appearances, but He looks into your hearts and observes your deeds.\n\nKey points:\n- Reminds believers that true worth is determined by one's character and deeds, not external appearances.\n- Encourages husbands to prioritize inner beauty and character in their relationship with their wives.",
+        "Hadith: None of you has faith until he loves for his brother what he loves for himself.\n\nKey points:\n- Promotes the virtue of selfless love and wishing well for others.\n- Encourages husbands to love and care for their wives as they love and care for themselves.",
+        "Hadith: The seeking of knowledge is obligatory for every Muslim.\n\nKey points:\n- Highlights the importance of seeking knowledge as a religious obligation.\n- Encourages husbands to support and facilitate their wives' pursuit of knowledge and personal growth.",
+        "Hadith: The best charity is to satisfy a hungry person.\n\nKey points:\n- Underlines the significance of feeding the hungry as a noble act of charity.\n- Encourages husbands to be mindful of their wives' needs, including providing adequate sustenance.",
+        "Hadith: A Muslim is the one who avoids harming Muslims with his tongue and hands.\n\nKey points:\n- Promotes the principle of non-harm and respect towards fellow Muslims.\n- Encourages husbands to avoid any form of verbal or physical harm towards their wives.",
+        "Hadith: A true believer is not involved in taunting, or frequently cursing, or in indecency or abusing.\n\nKey points:\n- Discourages believers from engaging in harmful and indecent behavior.\n- Encourages husbands to treat their wives with respect, avoiding taunting, cursing, or any form of abuse.",
+        "Hadith: It is better for a leader to make a mistake in forgiving than to make a mistake in punishing.\n\nKey points:\n- Emphasizes the value of forgiveness and mercy in leadership.\n- Encourages husbands to be forgiving and understanding towards their wives, prioritizing reconciliation over punishment.",
+        "Hadith: Kindness is a mark of faith, and whoever is not kind has no faith.\n\nKey points:\n- Highlights the connection between kindness and faith.\n- Encourages husbands to demonstrate kindness and compassion towards their wives as a reflection of their faith.",
+      ],
 
-  quoteText.textContent = quote.text;
-  quoteAuthor.textContent = quote.author;
-}
+      gift: [
+        "A beautiful Quran with a decorative cover",
+        "A prayer rug with intricate designs",
+        "A personalized engraved piece of jewelry",
+        "A set of high-quality halal perfumes",
+        "A subscription to an Islamic magazine or book club",
+        "A handcrafted tasbih (prayer beads)",
+        "A calligraphy artwork of her favorite Quranic verse or hadith",
+        "A luxury hijab or scarf made from premium fabric",
+        "A weekend getaway to a destination with Islamic significance",
+        "A cooking class to learn how to prepare traditional Islamic dishes",
+        "A visit to a local Islamic art exhibition or museum",
+        "A set of Islamic-themed home decor items",
+        "A donation made in her name to a charitable organization",
+        "A spa day or a relaxing massage at a halal-certified spa",
+        "A personalized photo album capturing precious moments together",
+        "A subscription to an online Islamic learning platform",
+        "A set of Islamic-themed calligraphy pens and art supplies",
+        "A beautifully illustrated children's book on Islamic values",
+        "A handmade prayer mat with her name or a special message",
+        "A customized Islamic calendar with important dates and reminders",
+        "A pilgrimage or Umrah trip to Makkah and Madinah",
+        "A subscription to a halal meal delivery service",
+        "A digital Quran player with recitations from her favorite reciters",
+        "A guided tour of an Islamic heritage site or historical mosque",
+        "A surprise date night at a halal restaurant",
+        "A set of natural and organic beauty products",
+        "A calligraphy workshop or art class",
+        "A journal or planner with Islamic quotes and reminders",
+        "A hand-knitted prayer shawl",
+        "A set of Islamic-themed home fragrances or scented candles",
+        "A personalized dua (supplication) bracelet with her favorite verses.",
+      ],
+    };
 
-const generateButton = document.getElementById("generate-button");
-generateButton.addEventListener("click", displayQuote);
+    let quotesToShow = [];
+
+    selectedOptions.forEach((option) => {
+      const randomIndex = Math.floor(Math.random() * quotes[option].length);
+      const randomQuote = quotes[option][randomIndex];
+      quotesToShow.push(randomQuote);
+    });
+
+    const quoteParagraphs = quotesToShow
+      .map((quote) => `<p>${quote}</p>`)
+      .join("");
+
+    quoteElement.innerHTML = quoteParagraphs;
+  }
+
+  generateBtn.addEventListener("click", generateQuote);
+});
